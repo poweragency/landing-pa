@@ -106,8 +106,31 @@ export default function VerticalShowcase({ vertical }: { vertical: Vertical }) {
             <p className="mx-auto max-w-[22ch] font-head text-[clamp(1.6rem,4vw,2.8rem)] font-bold leading-[1.12] tracking-[-0.02em]">
               &ldquo;<span className="grad-text">{vertical.quote}</span>&rdquo;
             </p>
+
+            <div className="mt-9 flex flex-col items-center gap-4">
+              <span className="font-head text-[0.74rem] font-semibold uppercase tracking-[0.18em] text-dim">
+                Chi guida il verticale
+              </span>
+              <div className="flex items-center gap-4">
+                <div className="relative grid h-[60px] w-[60px] place-items-center rounded-full">
+                  <span className="absolute inset-0 animate-[spin_8s_linear_infinite] rounded-full [background:conic-gradient(from_140deg,#ffb347,#ff2d2d,#c4161c,#ffb347)]" />
+                  <span className="absolute inset-[3px] grid place-items-center rounded-full bg-surface-2 font-head text-[1.1rem] font-bold">
+                    {vertical.owner.initials}
+                  </span>
+                </div>
+                <div className="text-left">
+                  <p className="font-head text-[1.05rem] font-semibold">
+                    {vertical.owner.name}
+                  </p>
+                  <p className="text-[0.88rem] font-medium text-orange">
+                    {vertical.owner.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {vertical.note && (
-              <p className="mx-auto mt-6 max-w-[60ch] text-[0.98rem] text-mut">
+              <p className="mx-auto mt-7 max-w-[60ch] text-[0.98rem] text-mut">
                 {vertical.note}
               </p>
             )}

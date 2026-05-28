@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TEAM, SALES, type Person } from "@/lib/content";
+import { TEAM, SQUAD, type Person } from "@/lib/content";
 import { EASE } from "@/lib/motion";
 import SectionHead from "./SectionHead";
 
@@ -33,7 +33,7 @@ export default function Team() {
       <div className="mx-auto max-w-[1180px]">
         <SectionHead
           kicker="Chi siamo"
-          title="Il trio + la squadra sales"
+          title="Il trio + la squadra"
           lead="Niente reparti infiniti. Le persone che costruiscono il tuo sistema sono le stesse che lo usano ogni giorno."
         />
 
@@ -52,13 +52,13 @@ export default function Team() {
             className="mb-7 flex items-center gap-4"
           >
             <span className="font-head text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-orange">
-              Sales team
+              La squadra
             </span>
             <span className="h-px flex-1 bg-line" />
           </motion.div>
 
           <div className="mx-auto grid max-w-[420px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-3">
-            {SALES.map((m, i) => (
+            {SQUAD.map((m, i) => (
               <PersonCard key={m.name} person={m} delay={i * 0.1} />
             ))}
           </div>
