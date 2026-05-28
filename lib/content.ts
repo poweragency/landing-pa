@@ -230,7 +230,7 @@ export const PROP: Vertical = {
     { step: "04", title: "Scala", text: "Da pochi account a 120+ in parallelo, mantenendo il controllo del rischio." },
   ],
   quote: "Niente teoria. Solo operatività live, ogni giorno.",
-  owner: { initials: "WA", name: "Wassim", role: "Vertical prop firms" },
+  owner: { name: "Wassim", role: "Vertical prop firms" },
   note: "Questo verticale è guidato in prima persona da Wassim — background nel matched betting, oggi sull'operatività prop sistematica.",
   metaTitle: "Prop firms",
   metaDescription:
@@ -276,8 +276,8 @@ export const ECOMMERCE: Vertical = {
     { step: "04", title: "Ottimizza in continuo", text: "Monitoraggio dashboard e ritocco campagne ogni giorno per tenere il ROI." },
   ],
   quote: "Sistemi di vendita collaudati. E ancora attivi oggi.",
-  owner: { initials: "VA", name: "Vincenzo Amore", role: "CEO · Vertical ecommerce" },
-  note: "Questo verticale è guidato in prima persona da Vincenzo Amore (CEO), che opera tuttora sui propri store.",
+  owner: { name: "Vincenzo", role: "CEO · Vertical ecommerce" },
+  note: "Questo verticale è guidato in prima persona da Vincenzo (CEO), che opera tuttora sui propri store.",
   metaTitle: "Ecommerce",
   metaDescription:
     "Business ecommerce scalabili e ancora attivi: testing prodotti, ottimizzazione campagne e gestione data-driven fino a 10.000€/day.",
@@ -287,22 +287,21 @@ export const ECOMMERCE: Vertical = {
    TEAM — fondatori + sales team (card)
    ============================================================ */
 export type Person = {
-  initials: string;
   name: string;
   role: string;
 };
 
 export const TEAM: Person[] = [
-  { initials: "VA", name: "Vincenzo Amore", role: "CEO · Vertical ecommerce" },
-  { initials: "MA", name: "Mattia", role: "Tecnico · AI · sviluppo" },
-  { initials: "WA", name: "Wassim", role: "Vertical prop firms" },
+  { name: "Vincenzo", role: "CEO · Vertical ecommerce" },
+  { name: "Mattia", role: "Tecnico · AI · sviluppo" },
+  { name: "Wassim", role: "Vertical prop firms" },
 ];
 
 // squadra estesa: ruoli misti (sales + tecnico)
 export const SQUAD: Person[] = [
-  { initials: "GA", name: "Gabriele", role: "Sales · Closer" },
-  { initials: "GI", name: "Giorgio", role: "Sales · Closer" },
-  { initials: "WI", name: "William", role: "Tecnico · sviluppo" },
+  { name: "Gabriele", role: "Sales · Closer" },
+  { name: "Giorgio", role: "Sales · Closer" },
+  { name: "William", role: "Tecnico · sviluppo" },
 ];
 
 export const CONTACT = {

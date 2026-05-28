@@ -20,7 +20,7 @@ function PersonCard({ person, delay }: { person: Person; delay: number }) {
       <div className="relative mx-auto mb-5 grid h-[86px] w-[86px] place-items-center rounded-full">
         <span className="absolute inset-0 animate-[spin_8s_linear_infinite] rounded-full [background:conic-gradient(from_140deg,#ffb347,#ff2d2d,#c4161c,#ffb347)]" />
         <span className="absolute inset-[3px] grid place-items-center rounded-full bg-surface-2 font-head text-[1.5rem] font-bold">
-          {person.initials}
+          {person.name.charAt(0)}
         </span>
       </div>
       <h3 className="font-head text-[1.25rem] font-semibold">{person.name}</h3>
