@@ -13,24 +13,31 @@ import { useRef, type ReactNode, type MouseEvent } from "react";
 type Props = {
   children: ReactNode;
   className?: string;
-  max?: number;
+  /** px·deg constant: higher → more tilt overall. Tilt = strength / cardSize. */
+  strength?: number;
+  minTilt?: number;
+  maxTilt?: number;
 };
 
-export default function TiltCard({ children, className, max = 8 }: Props) {
+export default function TiltCard({
+  children,
+  className,
+  strength = 3600,
+  minTilt = 6,
+  maxTilt = 18,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
+  // glare position (0..1 across the card)
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
 
-  const rx = useSpring(useTransform(py, [0, 1], [max, -max]), {
-    stiffness: 200,
-    damping: 20,
-  });
-  const ry = useSpring(useTransform(px, [0, 1], [-max, max]), {
-    stiffness: 200,
-    damping: 20,
-  });
+  // rotation (deg) — set imperatively so the max angle can depend on live size
+  const rxMV = useMotionValue(0);
+  const ryMV = useMotionValue(0);
+  const rx = useSpring(rxMV, { stiffness: 200, damping: 20 });
+  const ry = useSpring(ryMV, { stiffness: 200, damping: 20 });
 
   const glareX = useTransform(px, [0, 1], ["0%", "100%"]);
   const glareY = useTransform(py, [0, 1], ["0%", "100%"]);
@@ -39,13 +46,23 @@ export default function TiltCard({ children, className, max = 8 }: Props) {
   function onMove(e: MouseEvent) {
     if (reduce || !ref.current) return;
     const r = ref.current.getBoundingClientRect();
-    px.set((e.clientX - r.left) / r.width);
-    py.set((e.clientY - r.top) / r.height);
+    const nx = (e.clientX - r.left) / r.width; // 0..1
+    const ny = (e.clientY - r.top) / r.height; // 0..1
+    px.set(nx);
+    py.set(ny);
+
+    // tilt inversely proportional to card size → small cards move more
+    const dim = (r.width + r.height) / 2;
+    const t = Math.max(minTilt, Math.min(maxTilt, strength / dim));
+    rxMV.set((ny - 0.5) * -2 * t); // top → +t, bottom → -t
+    ryMV.set((nx - 0.5) * 2 * t); // left → -t, right → +t
   }
 
   function onLeave() {
     px.set(0.5);
     py.set(0.5);
+    rxMV.set(0);
+    ryMV.set(0);
   }
 
   return (

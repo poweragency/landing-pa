@@ -170,7 +170,7 @@ export default function SoftwareDetail({
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          <TiltCard max={6}>
+          <TiltCard>
             <VisualPanel software={software} />
           </TiltCard>
         </motion.div>
