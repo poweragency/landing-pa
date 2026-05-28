@@ -2,9 +2,12 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ScreenQuad } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, type RefObject } from "react";
 import * as THREE from "three";
 
+/* ============================================================
+   AURORA — full-screen fbm shader + mouse glow
+   ============================================================ */
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
   void main() {
@@ -78,10 +81,13 @@ const fragmentShader = /* glsl */ `
     float glow = exp(-dot(c, c) * 2.5);
     col += orange * glow * 0.35;
 
+    // mouse light — illuminates the background under the cursor
     vec2 mp = uv - uMouse;
     mp.x *= aspect;
-    float mg = exp(-dot(mp, mp) * 9.0);
-    col += mix(orange, red, 0.5) * mg * 0.22;
+    float md = dot(mp, mp);
+    float mg = exp(-md * 7.0) * 0.40;          // soft core
+    mg += exp(-md * 1.6) * 0.12;               // wide halo
+    col += mix(amber, red, 0.4) * mg;
 
     float vig = smoothstep(1.35, 0.35, length(uv - 0.5));
     col *= mix(0.65, 1.0, vig);
@@ -94,7 +100,9 @@ const fragmentShader = /* glsl */ `
   }
 `;
 
-function AuroraPlane() {
+type MouseRef = RefObject<THREE.Vector2>;
+
+function AuroraPlane({ mouse }: { mouse: MouseRef }) {
   const mat = useRef<THREE.ShaderMaterial>(null);
   const { size } = useThree();
 
@@ -115,8 +123,10 @@ function AuroraPlane() {
     const m = u.uMouse.value as THREE.Vector2;
     const targetX = state.pointer.x * 0.5 + 0.5;
     const targetY = state.pointer.y * 0.5 + 0.5;
-    m.x += (targetX - m.x) * 0.04;
-    m.y += (targetY - m.y) * 0.04;
+    m.x += (targetX - m.x) * 0.09;
+    m.y += (targetY - m.y) * 0.09;
+    // share smoothed mouse (uv space) with the particle field
+    if (mouse.current) mouse.current.copy(m);
   });
 
   return (
@@ -133,7 +143,137 @@ function AuroraPlane() {
   );
 }
 
+/* ============================================================
+   PARTICLES — drifting micro-particles in the theme palette
+   ============================================================ */
+const COUNT = 150;
+
+const particleVertex = /* glsl */ `
+  precision highp float;
+  attribute float aSize;
+  attribute vec3 aColor;
+  attribute float aPhase;
+  attribute float aSpeed;
+  uniform float uTime;
+  uniform float uPixelRatio;
+  uniform float uAspect;
+  uniform vec2 uMouse;
+  varying vec3 vColor;
+  varying float vTwinkle;
+  varying float vBoost;
+
+  void main() {
+    vColor = aColor;
+    vec3 pos = position;
+    float tt = uTime * aSpeed;
+    // gentle elliptical wander
+    pos.x += cos(tt + aPhase) * 0.35;
+    pos.y += sin(tt * 0.8 + aPhase * 1.3) * 0.30;
+
+    vec4 mv = modelViewMatrix * vec4(pos, 1.0);
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = aSize * uPixelRatio / max(-mv.z, 0.1);
+
+    vTwinkle = 0.55 + 0.45 * sin(uTime * 0.9 + aPhase * 3.0);
+
+    // brighten particles near the cursor (screen-space)
+    vec2 screenUv = gl_Position.xy / gl_Position.w * 0.5 + 0.5;
+    vec2 d = (screenUv - uMouse) * vec2(uAspect, 1.0);
+    vBoost = smoothstep(0.30, 0.0, length(d));
+  }
+`;
+
+const particleFragment = /* glsl */ `
+  precision highp float;
+  varying vec3 vColor;
+  varying float vTwinkle;
+  varying float vBoost;
+
+  void main() {
+    vec2 c = gl_PointCoord - 0.5;
+    float a = smoothstep(0.5, 0.0, length(c));
+    if (a <= 0.001) discard;
+    vec3 col = vColor * (1.0 + vBoost * 1.2);
+    float alpha = a * (0.25 + 0.40 * vTwinkle) * (1.0 + vBoost * 0.9);
+    gl_FragColor = vec4(col, alpha);
+  }
+`;
+
+function Particles({ mouse }: { mouse: MouseRef }) {
+  const mat = useRef<THREE.ShaderMaterial>(null);
+
+  const { positions, colors, sizes, phases, speeds } = useMemo(() => {
+    const positions = new Float32Array(COUNT * 3);
+    const colors = new Float32Array(COUNT * 3);
+    const sizes = new Float32Array(COUNT);
+    const phases = new Float32Array(COUNT);
+    const speeds = new Float32Array(COUNT);
+    const palette = [
+      [1.0, 0.7, 0.28], // amber
+      [1.0, 0.48, 0.1], // orange
+      [1.0, 0.18, 0.18], // red
+      [1.0, 0.85, 0.55], // warm light
+    ];
+    for (let i = 0; i < COUNT; i++) {
+      positions[i * 3 + 0] = (Math.random() - 0.5) * 7.2;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 5.2;
+      positions[i * 3 + 2] = Math.random() * -3.0 + 0.2;
+      const col = palette[(Math.random() * palette.length) | 0];
+      colors[i * 3 + 0] = col[0];
+      colors[i * 3 + 1] = col[1];
+      colors[i * 3 + 2] = col[2];
+      sizes[i] = 3 + Math.random() * 11;
+      phases[i] = Math.random() * Math.PI * 2;
+      speeds[i] = 0.08 + Math.random() * 0.22;
+    }
+    return { positions, colors, sizes, phases, speeds };
+  }, []);
+
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uPixelRatio: { value: 1.5 },
+      uAspect: { value: 1 },
+      uMouse: { value: new THREE.Vector2(0.5, 0.6) },
+    }),
+    [],
+  );
+
+  useFrame((state) => {
+    if (!mat.current) return;
+    const u = mat.current.uniforms;
+    u.uTime.value = state.clock.elapsedTime;
+    u.uAspect.value = state.size.width / Math.max(state.size.height, 1);
+    u.uPixelRatio.value = state.gl.getPixelRatio();
+    if (mouse.current) (u.uMouse.value as THREE.Vector2).copy(mouse.current);
+  });
+
+  return (
+    <points>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-aColor" args={[colors, 3]} />
+        <bufferAttribute attach="attributes-aSize" args={[sizes, 1]} />
+        <bufferAttribute attach="attributes-aPhase" args={[phases, 1]} />
+        <bufferAttribute attach="attributes-aSpeed" args={[speeds, 1]} />
+      </bufferGeometry>
+      <shaderMaterial
+        ref={mat}
+        uniforms={uniforms}
+        vertexShader={particleVertex}
+        fragmentShader={particleFragment}
+        transparent
+        depthTest={false}
+        depthWrite={false}
+        blending={THREE.AdditiveBlending}
+      />
+    </points>
+  );
+}
+
 export default function AuroraBackground() {
+  const mouse = useRef(new THREE.Vector2(0.5, 0.6));
+
   return (
     <Canvas
       gl={{ antialias: false, alpha: false, powerPreference: "high-performance" }}
@@ -142,7 +282,8 @@ export default function AuroraBackground() {
       style={{ position: "absolute", inset: 0 }}
       frameloop="always"
     >
-      <AuroraPlane />
+      <AuroraPlane mouse={mouse} />
+      <Particles mouse={mouse} />
     </Canvas>
   );
 }
