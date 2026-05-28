@@ -231,7 +231,6 @@ export const PROP: Vertical = {
   ],
   quote: "Niente teoria. Solo operatività live, ogni giorno.",
   owner: { name: "Wassim", role: "Vertical prop firms" },
-  note: "Questo verticale è guidato in prima persona da Wassim — background nel matched betting, oggi sull'operatività prop sistematica.",
   metaTitle: "Prop firms",
   metaDescription:
     "120+ account prop gestiti ogni giorno con software interno: hedging automatico, edge matematico, operatività live su capitali propri.",
@@ -277,7 +276,6 @@ export const ECOMMERCE: Vertical = {
   ],
   quote: "Sistemi di vendita collaudati. E ancora attivi oggi.",
   owner: { name: "Vincenzo", role: "CEO · Vertical ecommerce" },
-  note: "Questo verticale è guidato in prima persona da Vincenzo (CEO), che opera tuttora sui propri store.",
   metaTitle: "Ecommerce",
   metaDescription:
     "Business ecommerce scalabili e ancora attivi: testing prodotti, ottimizzazione campagne e gestione data-driven fino a 10.000€/day.",
