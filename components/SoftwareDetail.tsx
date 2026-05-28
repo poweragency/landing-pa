@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { type Software } from "@/lib/content";
 import { EASE } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
+import TiltCard from "./TiltCard";
 
 function VisualPanel({ software }: { software: Software }) {
   const soon = software.status === "soon";
@@ -169,7 +170,9 @@ export default function SoftwareDetail({
           viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          <VisualPanel software={software} />
+          <TiltCard max={6}>
+            <VisualPanel software={software} />
+          </TiltCard>
         </motion.div>
       </div>
     </section>
