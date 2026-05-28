@@ -5,6 +5,8 @@ import { TEAM, SQUAD, type Person } from "@/lib/content";
 import { EASE } from "@/lib/motion";
 import SectionHead from "./SectionHead";
 
+const PEOPLE: Person[] = [...TEAM, ...SQUAD];
+
 function PersonCard({ person, delay }: { person: Person; delay: number }) {
   return (
     <motion.article
@@ -33,35 +35,14 @@ export default function Team() {
       <div className="mx-auto max-w-[1180px]">
         <SectionHead
           kicker="Chi siamo"
-          title="Il trio + la squadra"
+          title="Il team"
           lead="Niente reparti infiniti. Le persone che costruiscono il tuo sistema sono le stesse che lo usano ogni giorno."
         />
 
         <div className="mx-auto grid max-w-[420px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-3">
-          {TEAM.map((m, i) => (
-            <PersonCard key={m.name} person={m} delay={i * 0.1} />
+          {PEOPLE.map((m, i) => (
+            <PersonCard key={m.name} person={m} delay={(i % 3) * 0.1} />
           ))}
-        </div>
-
-        <div className="mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="mb-7 flex items-center gap-4"
-          >
-            <span className="font-head text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-orange">
-              La squadra
-            </span>
-            <span className="h-px flex-1 bg-line" />
-          </motion.div>
-
-          <div className="mx-auto grid max-w-[420px] grid-cols-1 gap-5 md:max-w-none md:grid-cols-3">
-            {SQUAD.map((m, i) => (
-              <PersonCard key={m.name} person={m} delay={i * 0.1} />
-            ))}
-          </div>
         </div>
       </div>
     </section>
