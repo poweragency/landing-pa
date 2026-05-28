@@ -17,7 +17,7 @@ export default function SoftwarePage() {
         kicker="I software proprietari"
         title={
           <>
-            Software che usiamo <span className="grad-text">prima di venderlo.</span>
+            Software che usiamo <span className="grad-text">prima di vendere.</span>
           </>
         }
         lead="Tre strumenti nati dalle nostre operazioni reali. Lead generation, contenuti e siti: ognuno testato sul campo, non in una demo finta."
