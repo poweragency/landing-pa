@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THEME — dark base + orange→red gradient system
+   ============================================================ */
+@theme {
+  --color-bg: #0a0606;
+  --color-bg-soft: #120b09;
+  --color-surface: #16100d;
+  --color-surface-2: #1d1512;
+
+  --color-ink: #f6efe9;
+  --color-mut: #b6a79d;
+  --color-dim: #7c6f67;
+
+  --color-amber: #ffb347;
+  --color-orange: #ff7a18;
+  --color-red: #ff2d2d;
+  --color-deep: #c4161c;
+
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-strong: rgba(255, 138, 61, 0.28);
+
+  --font-head: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: #1a0d05;
+}
+
+/* hide default cursor when custom cursor is active (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none;
+  }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.grad-text {
+  background: linear-gradient(120deg, #ffb347 0%, #ff7a18 42%, #ff2d2d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-head {
+  font-family: var(--font-head);
+}
+
+/* gradient border ring used on hover cards */
+.ring-grad {
+  position: relative;
+}
+.ring-grad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #ffb347, #ff7a18 45%, #ff2d2d);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out-expo);
+  pointer-events: none;
+}
+.ring-grad:hover::before {
+  opacity: 0.75;
+}
+
+/* thin scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a201b;
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a2c24;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
