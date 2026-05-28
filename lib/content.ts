@@ -2,7 +2,8 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/software", label: "Software" },
   { href: "/crm", label: "CRM" },
-  { href: "/#team", label: "Team" },
+  { href: "/prop", label: "Prop" },
+  { href: "/ecommerce", label: "Ecommerce" },
 ] as const;
 
 export const STATS = [
@@ -169,6 +170,115 @@ export const CASE_METRICS = [
   { value: 5, suffix: "", label: "clienti chiusi" },
   { value: 15000, suffix: "€", label: "fatturato generato" },
 ] as const;
+
+/* ============================================================
+   VERTICALI — pagine /prop e /ecommerce (palestra sul proprio business)
+   ============================================================ */
+export type Metric = { value: number; prefix?: string; suffix?: string; label: string };
+
+export type Vertical = {
+  kicker: string;
+  title: string;
+  titleAccent: string;
+  lead: string;
+  metrics: Metric[];
+  features: { icon: string; title: string; text: string }[];
+  process: { step: string; title: string; text: string }[];
+  quote: string;
+  note?: string;
+  metaTitle: string;
+  metaDescription: string;
+};
+
+export const PROP: Vertical = {
+  kicker: "Il verticale · Prop firms",
+  title: "120+ account prop,",
+  titleAccent: "gestiti ogni giorno.",
+  lead: "Gestione sistematica di oltre 120 account prop con software costruito internamente. Hedging automatico sui capitali propri, edge matematico, zero teoria: solo operatività live in produzione.",
+  metrics: [
+    { value: 120, suffix: "+", label: "account prop operativi" },
+    { value: 100, suffix: "%", label: "operatività su capitali propri" },
+    { value: 24, suffix: "/7", label: "automazioni sempre attive" },
+  ],
+  features: [
+    {
+      icon: "🤖",
+      title: "Automazioni complete",
+      text: "Software interno che gestisce gli account end-to-end: niente operatività manuale, niente errori da stanchezza.",
+    },
+    {
+      icon: "🛡️",
+      title: "Hedging automatico",
+      text: "Copertura sistematica sui capitali propri. Il rischio è gestito da regole, non da emozioni.",
+    },
+    {
+      icon: "📐",
+      title: "Edge matematico",
+      text: "Sistemi costruiti su un vantaggio statistico provato e sistematizzato, non su sensazioni.",
+    },
+    {
+      icon: "⚡",
+      title: "100% in produzione",
+      text: "Operatività live ogni giorno sui nostri capitali. Quello che vendiamo è quello che usiamo.",
+    },
+  ],
+  process: [
+    { step: "01", title: "Sistema con edge", text: "Partiamo da un vantaggio matematico misurabile, non da una strategia sentita dire." },
+    { step: "02", title: "Sistematizzazione", text: "Lo trasformiamo in regole eseguibili da software: ripetibili e scalabili." },
+    { step: "03", title: "Automazione", text: "Le automazioni gestiscono gli account: esecuzione, hedging, monitoraggio." },
+    { step: "04", title: "Scala", text: "Da pochi account a 120+ in parallelo, mantenendo il controllo del rischio." },
+  ],
+  quote: "Niente teoria. Solo operatività live, ogni giorno.",
+  note: "Verticale gestito in prima persona da Wassim — background nel matched betting, oggi sull'operatività prop sistematica.",
+  metaTitle: "Prop firms",
+  metaDescription:
+    "120+ account prop gestiti ogni giorno con software interno: hedging automatico, edge matematico, operatività live su capitali propri.",
+};
+
+export const ECOMMERCE: Vertical = {
+  kicker: "Il verticale · Ecommerce",
+  title: "Da dipendente a",
+  titleAccent: "10.000€ al giorno.",
+  lead: "Business ecommerce scalabili con sistemi di vendita collaudati — e ancora attivi oggi. Testing prodotti iterativo, analisi dashboard costante, ottimizzazione delle campagne millimetrica.",
+  metrics: [
+    { value: 10000, suffix: "€/day", label: "ecommerce gestito in scala" },
+    { value: 100, suffix: "%", label: "data-driven, zero intuito" },
+    { value: 0, suffix: "", label: "store demo: sono tutti reali" },
+  ],
+  features: [
+    {
+      icon: "🧪",
+      title: "Testing sistematico",
+      text: "Prodotti testati in modo iterativo: i dati decidono cosa scala e cosa si taglia. Niente affezione al prodotto.",
+    },
+    {
+      icon: "📊",
+      title: "Data-driven",
+      text: "Analisi costante delle dashboard. Ogni euro speso in ads ha una metrica che lo giustifica.",
+    },
+    {
+      icon: "🎯",
+      title: "Campagne ottimizzate",
+      text: "Ottimizzazione millimetrica delle campagne pubblicitarie, non set-and-forget.",
+    },
+    {
+      icon: "🏪",
+      title: "Store ancora attivi",
+      text: "Non case study del passato: store che generano reddito oggi, gestiti in prima persona.",
+    },
+  ],
+  process: [
+    { step: "01", title: "Ricerca prodotto", text: "Selezione basata su domanda reale e margini, non sull'hype del momento." },
+    { step: "02", title: "Test rapidi", text: "Si testa veloce e si legge il mercato dai numeri, non dalle sensazioni." },
+    { step: "03", title: "Scala ciò che funziona", text: "Sul vincente si spinge il budget; sul resto si taglia senza pietà." },
+    { step: "04", title: "Ottimizza in continuo", text: "Monitoraggio dashboard e ritocco campagne ogni giorno per tenere il ROI." },
+  ],
+  quote: "Sistemi di vendita collaudati. E ancora attivi oggi.",
+  note: "Verticale gestito in prima persona da Vincenzo Amore, che opera tuttora sui propri store.",
+  metaTitle: "Ecommerce",
+  metaDescription:
+    "Business ecommerce scalabili e ancora attivi: testing prodotti, ottimizzazione campagne e gestione data-driven fino a 10.000€/day.",
+};
 
 /* ============================================================
    TEAM — fondatori + sales team (card)
