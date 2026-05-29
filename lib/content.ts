@@ -131,6 +131,7 @@ export const CRM = {
   description:
     "Costruiamo CRM verticali, modellati sul flusso reale di un settore: lead, preventivi, lavorazioni e follow-up in un'unica pipeline, senza fogli sparsi e contatti persi. Il primo è dedicato alle carrozzerie; altri verticali sono in arrivo.",
   url: "https://crm-carrozzerie.vercel.app",
+  demo: { email: "demo@gmail.com", password: "demo123" },
   modules: [
     {
       icon: "inbox",

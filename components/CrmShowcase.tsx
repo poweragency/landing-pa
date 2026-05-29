@@ -82,17 +82,22 @@ export default function CrmShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="mt-12 flex justify-center"
+            className="mt-12 flex flex-col items-center gap-4"
           >
             <MagneticButton
               href={CRM.url}
               className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-amber via-orange to-red px-7 py-4 font-head text-base font-semibold text-[#1a0a03] shadow-[0_10px_40px_-8px_rgba(255,45,45,0.55)]"
             >
-              Apri il CRM
+              Prova in demo
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 ↗
               </span>
             </MagneticButton>
+            <p className="text-[0.88rem] text-dim">
+              Email <span className="text-ink">{CRM.demo.email}</span>
+              <span className="mx-2">·</span>
+              Password <span className="text-ink">{CRM.demo.password}</span>
+            </p>
           </motion.div>
         </div>
       </section>
