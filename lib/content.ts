@@ -237,7 +237,7 @@ export const PROP: Vertical = {
     { step: "04", title: "Scala", text: "Da pochi account a oltre 120 in parallelo, senza perdere il controllo del rischio." },
   ],
   quote: "Niente teoria. Solo operatività live, ogni giorno.",
-  owner: { name: "Wassim", role: "Tecnico · Verticale su prop" },
+  owner: { name: "Wassim", role: "Tecnico · Verticale su prop", photo: "/team/wassim.jpg" },
   metaTitle: "Prop firms",
   metaDescription:
     "Oltre 120 account prop gestiti ogni giorno con software interno: hedging automatico, edge matematico e operatività live su capitali propri.",
@@ -307,7 +307,7 @@ export const TEAM: Person[] = [
   { name: "Vincenzo", role: "CEO", photo: "/team/vincenzo.jpg" },
   { name: "William", role: "CTO · Verticale su software", photo: "/team/william.jpg" },
   { name: "Mattia", role: "Tecnico · Verticale su software", photo: "/team/mattia.jpg" },
-  { name: "Wassim", role: "Tecnico · Verticale su prop" },
+  { name: "Wassim", role: "Tecnico · Verticale su prop", photo: "/team/wassim.jpg" },
 ];
 
 // squadra estesa: marketing
