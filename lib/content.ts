@@ -149,9 +149,9 @@ export const CRM = {
       text: "Lo stato di ogni lavoro a colpo d'occhio: in attesa, in lavorazione, pronto, consegnato.",
     },
     {
-      icon: "bell",
-      title: "Follow-up automatici",
-      text: "I preventivi in sospeso vengono ricontattati in automatico, con promemoria e sequenze pianificate. Nessun cliente lasciato a metà.",
+      icon: "send",
+      title: "Automazioni mail e WhatsApp",
+      text: "Email e messaggi WhatsApp inviati in automatico: conferme, promemoria appuntamento e aggiornamenti sullo stato della pratica, al momento giusto.",
     },
     {
       icon: "link",
@@ -167,7 +167,7 @@ export const CRM = {
   workflow: [
     { step: "01", title: "Arriva il lead", text: "Dalle ads, dal sito o da Google: ogni richiesta entra nel CRM." },
     { step: "02", title: "Qualifica e preventivo", text: "Il contatto viene qualificato e riceve un preventivo tracciato." },
-    { step: "03", title: "Follow-up automatico", text: "Se non risponde, parte un follow-up automatico finché non chiude o dice no." },
+    { step: "03", title: "Mail e WhatsApp automatici", text: "Conferme, promemoria e aggiornamenti partono in automatico via email e WhatsApp." },
     { step: "04", title: "Lavorazione e consegna", text: "Lavoro in corso, stato aggiornato, cliente sempre informato." },
   ],
 } as const;

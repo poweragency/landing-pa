@@ -19,6 +19,7 @@ import {
   Target,
   Store,
   Bell,
+  Send,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -44,6 +45,7 @@ const MAP: Record<string, LucideIcon> = {
   target: Target,
   store: Store,
   bell: Bell,
+  send: Send,
 };
 
 export default function Icon({
