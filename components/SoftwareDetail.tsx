@@ -149,6 +149,7 @@ export default function SoftwareDetail({ software }: { software: Software }) {
             {software.url ? (
               <MagneticButton
                 href={software.url}
+                newTab
                 className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-amber via-orange to-red px-7 py-4 font-head text-base font-semibold text-[#1a0a03] shadow-[0_10px_40px_-8px_rgba(255,45,45,0.55)]"
               >
                 {software.ctaLabel}

@@ -16,6 +16,7 @@ type Props = {
   strength?: number;
   ariaLabel?: string;
   block?: boolean;
+  newTab?: boolean;
 };
 
 export default function MagneticButton({
@@ -26,6 +27,7 @@ export default function MagneticButton({
   strength = 0.4,
   ariaLabel,
   block = false,
+  newTab = false,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
@@ -54,6 +56,8 @@ export default function MagneticButton({
       aria-label={ariaLabel}
       data-cursor="hover"
       className={className}
+      target={newTab ? "_blank" : undefined}
+      rel={newTab ? "noopener noreferrer" : undefined}
     >
       {children}
     </a>
