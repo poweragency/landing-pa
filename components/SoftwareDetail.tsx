@@ -141,27 +141,6 @@ export default function SoftwareDetail({
             </div>
           )}
 
-          <div className="mt-8">
-            {software.url ? (
-              <MagneticButton
-                href={software.url}
-                className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-amber via-orange to-red px-7 py-4 font-head text-base font-semibold text-[#1a0a03] shadow-[0_10px_40px_-8px_rgba(255,45,45,0.55)]"
-              >
-                {software.ctaLabel}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  ↗
-                </span>
-              </MagneticButton>
-            ) : (
-              <MagneticButton
-                href="#contatti"
-                strength={0.25}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-7 py-4 font-head text-base font-semibold text-ink transition-colors hover:border-line-strong hover:bg-orange/[0.08]"
-              >
-                {software.ctaLabel}
-              </MagneticButton>
-            )}
-          </div>
         </motion.div>
 
         {/* visual */}
@@ -176,6 +155,37 @@ export default function SoftwareDetail({
           </TiltCard>
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+        transition={{ duration: 0.6, ease: EASE }}
+        className="mx-auto mt-12 max-w-[1180px]"
+      >
+        {software.url ? (
+          <MagneticButton
+            block
+            strength={0.12}
+            href={software.url}
+            className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-amber via-orange to-red px-8 py-5 font-head text-[1.05rem] font-semibold text-[#1a0a03] shadow-[0_10px_40px_-8px_rgba(255,45,45,0.55)]"
+          >
+            {software.ctaLabel}
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              ↗
+            </span>
+          </MagneticButton>
+        ) : (
+          <MagneticButton
+            block
+            strength={0.12}
+            href="#contatti"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-line bg-white/[0.03] px-8 py-5 font-head text-[1.05rem] font-semibold text-ink transition-colors hover:border-line-strong hover:bg-orange/[0.08]"
+          >
+            {software.ctaLabel}
+          </MagneticButton>
+        )}
+      </motion.div>
     </section>
   );
 }

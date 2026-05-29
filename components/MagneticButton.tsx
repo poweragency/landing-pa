@@ -15,6 +15,7 @@ type Props = {
   className?: string;
   strength?: number;
   ariaLabel?: string;
+  block?: boolean;
 };
 
 export default function MagneticButton({
@@ -24,6 +25,7 @@ export default function MagneticButton({
   className,
   strength = 0.4,
   ariaLabel,
+  block = false,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
@@ -72,7 +74,12 @@ export default function MagneticButton({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      style={{ x: sx, y: sy, display: "inline-flex" }}
+      style={{
+        x: sx,
+        y: sy,
+        display: block ? "flex" : "inline-flex",
+        width: block ? "100%" : undefined,
+      }}
       whileTap={{ scale: 0.96 }}
     >
       {inner}

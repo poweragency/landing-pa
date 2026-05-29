@@ -129,7 +129,7 @@ export const CRM = {
   tag: "Verticale · CRM su misura",
   headline: "Un CRM cucito sul tuo settore.",
   description:
-    "Costruiamo CRM verticali, modellati sul flusso reale di un settore: lead, preventivi, lavorazioni e follow-up in un'unica pipeline, con l'AI che lavora i contatti al posto tuo. Il primo è dedicato alle carrozzerie; altri verticali sono in arrivo.",
+    "Costruiamo CRM verticali, modellati sul flusso reale di un settore: lead, preventivi, lavorazioni e follow-up in un'unica pipeline, senza fogli sparsi e contatti persi. Il primo è dedicato alle carrozzerie; altri verticali sono in arrivo.",
   url: "https://crm-carrozzerie.vercel.app",
   modules: [
     {
@@ -148,9 +148,9 @@ export const CRM = {
       text: "Lo stato di ogni lavoro a colpo d'occhio: in attesa, in lavorazione, pronto, consegnato.",
     },
     {
-      icon: "bot",
-      title: "Follow-up con l'AI",
-      text: "I preventivi in sospeso vengono ricontattati in automatico: l'AI scrive e insiste al posto tuo, con il tono giusto.",
+      icon: "bell",
+      title: "Follow-up automatici",
+      text: "I preventivi in sospeso vengono ricontattati in automatico, con promemoria e sequenze pianificate. Nessun cliente lasciato a metà.",
     },
     {
       icon: "link",
@@ -166,7 +166,7 @@ export const CRM = {
   workflow: [
     { step: "01", title: "Arriva il lead", text: "Dalle ads, dal sito o da Google: ogni richiesta entra nel CRM." },
     { step: "02", title: "Qualifica e preventivo", text: "Il contatto viene qualificato e riceve un preventivo tracciato." },
-    { step: "03", title: "Follow-up automatico", text: "Se non risponde, l'AI lo ricontatta finché non chiude o dice no." },
+    { step: "03", title: "Follow-up automatico", text: "Se non risponde, parte un follow-up automatico finché non chiude o dice no." },
     { step: "04", title: "Lavorazione e consegna", text: "Lavoro in corso, stato aggiornato, cliente sempre informato." },
   ],
 } as const;

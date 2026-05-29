@@ -9,7 +9,7 @@ import { CRM } from "@/lib/content";
 export const metadata: Metadata = {
   title: "CRM",
   description:
-    "CRM verticali su misura: lead, preventivi, pratiche e lavorazioni in un'unica pipeline, con follow-up automatici guidati dall'AI. Il primo verticale è per le carrozzerie.",
+    "CRM verticali su misura: lead, preventivi, pratiche e lavorazioni in un'unica pipeline, con follow-up automatici. Il primo verticale è per le carrozzerie.",
 };
 
 export default function CrmPage() {

@@ -52,7 +52,7 @@ export default function CrmShowcase() {
           <SectionHead
             kicker="Come funziona"
             title="Dal lead alla consegna"
-            lead="Un percorso lineare, con l'AI che presidia i punti in cui di solito i contatti si perdono."
+            lead="Un percorso lineare che presidia i punti in cui di solito i contatti si perdono."
           />
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">

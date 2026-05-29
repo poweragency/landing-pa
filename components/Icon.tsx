@@ -18,6 +18,7 @@ import {
   LineChart,
   Target,
   Store,
+  Bell,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -42,6 +43,7 @@ const MAP: Record<string, LucideIcon> = {
   lineChart: LineChart,
   target: Target,
   store: Store,
+  bell: Bell,
 };
 
 export default function Icon({
