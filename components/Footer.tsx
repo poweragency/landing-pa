@@ -50,9 +50,45 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-[0.86rem] text-dim">
-          <p>© {year} PowerAgency. Tutti i diritti riservati.</p>
-          <p>Costruito con sistemi che vendiamo.</p>
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 text-[0.86rem] text-dim">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <p>© {year} PowerAgency. Tutti i diritti riservati.</p>
+            <p className="hidden sm:block">· Costruito con sistemi che vendiamo.</p>
+          </div>
+
+          <a
+            href="https://powersite.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="hover"
+            aria-label="Powered by PowerLanding — apri il sito"
+            className="group inline-flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.02] px-4 py-2 font-head text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-amber transition-colors hover:border-amber/60 hover:bg-orange/[0.08]"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="13"
+              height="13"
+              fill="none"
+              aria-hidden
+              className="transition-transform duration-300 group-hover:scale-110"
+            >
+              <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="url(#plbolt)" />
+              <defs>
+                <linearGradient
+                  id="plbolt"
+                  x1="4"
+                  y1="2"
+                  x2="20"
+                  y2="22"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#ffb347" />
+                  <stop offset="1" stopColor="#ff2d2d" />
+                </linearGradient>
+              </defs>
+            </svg>
+            Powered by PowerLanding
+          </a>
         </div>
       </div>
     </footer>
