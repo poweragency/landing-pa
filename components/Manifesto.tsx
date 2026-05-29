@@ -5,6 +5,7 @@ import { FEATURES } from "@/lib/content";
 import { EASE } from "@/lib/motion";
 import SectionHead from "./SectionHead";
 import TiltCard from "./TiltCard";
+import Icon from "./Icon";
 
 export default function Manifesto() {
   return (
@@ -32,8 +33,8 @@ export default function Manifesto() {
             >
               <TiltCard className="h-full">
                 <article className="ring-grad flex h-full flex-col rounded-[18px] border border-line bg-gradient-to-b from-surface to-bg p-8 transition-shadow duration-300 hover:shadow-[0_24px_50px_-24px_rgba(255,45,45,0.4)]">
-                  <div className="mb-5 grid h-14 w-14 place-items-center rounded-[14px] border border-line-strong bg-orange/10 text-2xl">
-                    {f.icon}
+                  <div className="mb-5 grid h-14 w-14 place-items-center rounded-[14px] border border-line-strong bg-orange/10">
+                    <Icon name={f.icon} className="h-6 w-6 text-amber" />
                   </div>
                   <h3 className="font-head text-[1.28rem] font-semibold tracking-tight">
                     {f.title}

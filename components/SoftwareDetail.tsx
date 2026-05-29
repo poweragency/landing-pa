@@ -5,6 +5,7 @@ import { type Software } from "@/lib/content";
 import { EASE } from "@/lib/motion";
 import MagneticButton from "./MagneticButton";
 import TiltCard from "./TiltCard";
+import Icon from "./Icon";
 
 function VisualPanel({ software }: { software: Software }) {
   const soon = software.status === "soon";
@@ -34,9 +35,9 @@ function VisualPanel({ software }: { software: Software }) {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="mx-auto grid h-20 w-20 place-items-center rounded-[20px] border border-line-strong bg-orange/10 text-4xl"
+            className="mx-auto grid h-20 w-20 place-items-center rounded-[20px] border border-line-strong bg-orange/10"
           >
-            {software.icon}
+            <Icon name={software.icon} className="h-9 w-9 text-amber" />
           </motion.div>
           <p className="mt-5 font-head text-[1.6rem] font-bold tracking-tight">
             {software.name}
