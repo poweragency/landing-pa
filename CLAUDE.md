@@ -4,7 +4,7 @@
 
 ## ⚠️ Cos'è questo progetto
 - È la landing PowerAgency **reale**, servita su **`www.poweragency.it`** (l'apex `poweragency.it` fa 307 → www). Single-locale IT.
-- Vercel project **`landing-p-a`** · repo **`poweragency/landing-pa`** · **deploy automatico a ogni push su `main`**.
+- Vercel project **`landing-poweragency`** · repo **`poweragency/landing-poweragency`** · **deploy automatico a ogni push su `main`**.
 - Il vecchio progetto `poweragency-web` è stato **eliminato** (2026-06): NON cercare il HUB altrove. Pagine: `/`, `/ecosistema`, `/software`, `/crm`, `/prop`, `/ecommerce` + legali.
 
 ## Comandi
