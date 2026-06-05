@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import VerticalShowcase from "@/components/VerticalShowcase";
 import CTA from "@/components/CTA";
 import { PROP } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: PROP.metaTitle,
   description: PROP.metaDescription,
-};
+  path: "/prop",
+});
 
 export default function PropPage() {
   return (

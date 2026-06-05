@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import VerticalShowcase from "@/components/VerticalShowcase";
 import CTA from "@/components/CTA";
 import { ECOMMERCE } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: ECOMMERCE.metaTitle,
   description: ECOMMERCE.metaDescription,
-};
+  path: "/ecommerce",
+});
 
 export default function EcommercePage() {
   return (

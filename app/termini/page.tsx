@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import LegalShell from "@/components/LegalShell";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Termini di servizio",
   description: "Termini e condizioni d'uso del sito PowerAgency.",
-};
+  path: "/termini",
+});
 
 export default function TerminiPage() {
   return (

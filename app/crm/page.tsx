@@ -1,20 +1,33 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CrmShowcase from "@/components/CrmShowcase";
 import CaseStudy from "@/components/CaseStudy";
 import CTA from "@/components/CTA";
 import MagneticButton from "@/components/MagneticButton";
+import JsonLd from "@/components/JsonLd";
 import { CRM } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
+import { serviceSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "CRM",
-  description:
-    "CRM verticali su misura: lead, preventivi, pratiche e lavorazioni in un'unica pipeline, con follow-up automatici. Il primo verticale è per le carrozzerie.",
-};
+const DESCRIPTION =
+  "CRM verticali su misura: lead, preventivi, pratiche e lavorazioni in un'unica pipeline, con follow-up automatici. Il primo verticale è per le carrozzerie.";
+
+export const metadata = pageMeta({
+  title: "CRM su misura",
+  description: DESCRIPTION,
+  path: "/crm",
+});
 
 export default function CrmPage() {
   return (
     <main id="top">
+      <JsonLd
+        data={serviceSchema({
+          name: "CRM verticale su misura",
+          description: DESCRIPTION,
+          path: "/crm",
+          serviceType: "CRM su misura per settore",
+        })}
+      />
       <PageHero kicker={CRM.tag} title={CRM.headline} lead={CRM.description}>
         <div className="flex flex-col items-center gap-4">
           <MagneticButton

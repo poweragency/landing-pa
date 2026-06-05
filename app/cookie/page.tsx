@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import LegalShell from "@/components/LegalShell";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Cookie Policy",
   description: "Informativa sull'uso dei cookie del sito PowerAgency.",
-};
+  path: "/cookie",
+});
 
 export default function CookiePage() {
   return (

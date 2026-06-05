@@ -1,18 +1,31 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SoftwareDetail from "@/components/SoftwareDetail";
 import CTA from "@/components/CTA";
+import JsonLd from "@/components/JsonLd";
 import { SOFTWARE } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
+import { serviceSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
+const DESCRIPTION =
+  "PowerLeads, PowerReel e PowerLanding: i software che usiamo ogni giorno sul nostro business prima di portarli fuori. Lead generation, contenuti e siti che convertono.";
+
+export const metadata = pageMeta({
   title: "Software proprietari",
-  description:
-    "PowerLeads, PowerReel e PowerLanding: i software che usiamo ogni giorno sul nostro business prima di portarli fuori. Lead generation, contenuti e siti che convertono.",
-};
+  description: DESCRIPTION,
+  path: "/software",
+});
 
 export default function SoftwarePage() {
   return (
     <main id="top">
+      <JsonLd
+        data={serviceSchema({
+          name: "Software proprietari PowerAgency",
+          description: DESCRIPTION,
+          path: "/software",
+          serviceType: "Software e siti web AI-powered",
+        })}
+      />
       <PageHero
         kicker="I software proprietari"
         title={

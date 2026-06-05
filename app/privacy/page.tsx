@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import LegalShell from "@/components/LegalShell";
 import { CONTACT } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Privacy Policy",
   description: "Informativa sul trattamento dei dati personali di PowerAgency.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
