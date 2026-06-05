@@ -1,6 +1,7 @@
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/software", label: "Software" },
+  { href: "/ecosistema", label: "Ecosistema" },
   { href: "/crm", label: "CRM" },
   { href: "/prop", label: "Prop" },
   { href: "/ecommerce", label: "Ecommerce" },
@@ -438,5 +439,67 @@ export const ECOMMERCE_FAQ: Faq[] = [
   {
     q: "Offrite consulenza ecommerce?",
     a: "Sì: una consulenza 1:1 con chi gestisce store reali fino a 10.000€ al giorno — prodotto, campagne e numeri. Paghi competenza operativa, non teoria.",
+  },
+];
+
+/* ============================================================
+   ECOSISTEMA — pagina /ecosistema (sito + lead generation + CRM, servizio completo)
+   ============================================================ */
+export const ECOSISTEMA = {
+  hero: {
+    kicker: "L'ecosistema PowerAgency",
+    title: "Sito, lead generation e CRM.",
+    titleAccent: "Un solo ecosistema.",
+    lead: "Non tre tool incollati: un'unica infrastruttura guidata dall'AI che cattura il lead, lo qualifica e te lo passa quando è caldo. Funziona perché la usiamo prima sui nostri business.",
+  },
+  problem: {
+    title: "Tre tool diversi. Lead persi nel mezzo.",
+    body: "Sito fatto due anni fa, lead capture su un form che non parla con niente, CRM su un foglio Google, ads che girano senza che nessuno qualifichi i contatti in arrivo. Risultato: gran parte dei lead muore prima di essere chiamata — non per cattiva volontà, ma perché il sistema è frammentato e nessuno ha il tempo di incollare i pezzi a mano ogni giorno.",
+  },
+  pillars: [
+    {
+      icon: "layers",
+      title: "Sito che converte",
+      text: "Landing dedicate per ogni canale, copy AI-assisted calibrato sul target, caricamento sotto i 2 secondi. Costruito per essere indicizzato (SEO) e citato dalle AI (GEO).",
+    },
+    {
+      icon: "target",
+      title: "Lead generation con qualifica AI",
+      text: "Form intelligenti che si adattano al canale di arrivo, scoring automatico per settore, budget e intento. Al sales arriva solo ciò che vale la chiamata.",
+    },
+    {
+      icon: "chart",
+      title: "CRM integrato",
+      text: "Pipeline pronta e configurabile sul tuo processo, notifiche real-time sul lead caldo, dashboard per canale e per agente. Tutti i lead in un posto, ordinati per priorità.",
+    },
+  ],
+  process: [
+    { step: "01", title: "Discovery call", text: "30 minuti. Capiamo settore, ads attuali e come gestisci i lead oggi. Già qui ti diciamo se siamo i partner giusti." },
+    { step: "02", title: "Audit e proposta", text: "Analisi del punto di partenza, economics chiari (costi, ROI atteso, break-even) e timeline. Nessun preventivo da decifrare." },
+    { step: "03", title: "Build · 2-3 settimane", text: "Sito, lead gen e CRM costruiti e integrati, testati su traffico reale prima del go-live. Tu intervieni solo dove serve la tua firma." },
+    { step: "04", title: "Go-live + ottimizzazione", text: "Da lì ricevi lead qualificati nel CRM. Ottimizziamo nelle prime 4 settimane sulla base dei dati reali." },
+  ],
+} as const;
+
+export const ECOSISTEMA_FAQ: Faq[] = [
+  {
+    q: "Quanto tempo serve per partire?",
+    a: "Tipicamente 2-3 settimane di build dopo la firma. Entro circa 30 giorni dall'inizio sei live con tutto il sistema operativo.",
+  },
+  {
+    q: "Posso mantenere il mio sito attuale?",
+    a: "Tecnicamente sì, ma di solito non lo consigliamo: il sistema lavora meglio quando il sito è costruito coerente con il funnel di lead generation. Se il tuo converte bene possiamo collegarci, altrimenti lo ricostruiamo.",
+  },
+  {
+    q: "Chi gestisce la pubblicità (ads)?",
+    a: "Possiamo gestirle noi (Google Ads + Meta) o affiancarci alla tua agenzia esistente. Il sistema di lead generation è agnostico al canale: funziona con qualsiasi sorgente.",
+  },
+  {
+    q: "Quanto tempo devo dedicare io?",
+    a: "1-2 ore a settimana in fase di build, per contenuti e decisioni di brand. A regime, solo le call con i lead caldi che il CRM ti segnala. Il resto lo gestiamo noi.",
+  },
+  {
+    q: "Cosa succede se voglio interrompere?",
+    a: "Il sistema resta tuo: il sito è esportabile e i dati dei lead nel CRM ti seguono. Nessun lock-in: paghi il servizio finché ti serve.",
   },
 ];
