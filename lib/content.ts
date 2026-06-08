@@ -330,6 +330,20 @@ export const CONTACT = {
   instagramHandle: "@_poweragency_",
 } as const;
 
+export const COMPANY = {
+  legalName: "Amore Vincenzo",
+  tradeName: "Power Agency",
+  address: "Via Giuseppe Parini 2, 20019 Settimo Milanese (MI), Italia",
+  vat: "12497340963",
+  taxCode: "MRAVCN95C27F839R",
+  rea: "MI-2675736",
+  pec: "poweragency@pec.it",
+  email: "info@poweragency.it",
+  // Identificazione completa del titolare per le pagine legali
+  identifier:
+    "Amore Vincenzo (impresa individuale operante con il nome commerciale «Power Agency»), con sede legale in Via Giuseppe Parini 2, 20019 Settimo Milanese (MI), Italia – P.IVA 12497340963 – C.F. MRAVCN95C27F839R – REA MI-2675736 – PEC poweragency@pec.it",
+} as const;
+
 /* ============================================================
    FAQ — sezione home + sezioni per pagina (con FAQPage schema)
    ============================================================ */

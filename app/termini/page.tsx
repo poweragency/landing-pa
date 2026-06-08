@@ -1,4 +1,5 @@
 import LegalShell from "@/components/LegalShell";
+import { COMPANY } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -14,9 +15,10 @@ export default function TerminiPage() {
       updated="maggio 2026"
       sections={[
         {
-          heading: "1. Oggetto",
+          heading: "1. Oggetto e titolare",
           body: [
             "I presenti termini regolano l'accesso e l'utilizzo del sito di PowerAgency e dei contenuti in esso pubblicati.",
+            `Il sito è gestito da ${COMPANY.identifier}.`,
           ],
         },
         {
@@ -46,7 +48,7 @@ export default function TerminiPage() {
         {
           heading: "6. Legge applicabile e foro competente",
           body: [
-            "I presenti termini sono regolati dalla legge italiana. [Indicare il foro competente.]",
+            "I presenti termini sono regolati dalla legge italiana. Per i consumatori è competente il foro del luogo di residenza o domicilio elettivo dell'utente, se ubicato in Italia; in ogni altro caso è competente in via esclusiva il Foro di Milano.",
           ],
         },
       ]}

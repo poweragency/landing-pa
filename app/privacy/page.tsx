@@ -1,5 +1,5 @@
 import LegalShell from "@/components/LegalShell";
-import { CONTACT } from "@/lib/content";
+import { CONTACT, COMPANY } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -17,8 +17,8 @@ export default function PrivacyPage() {
         {
           heading: "1. Titolare del trattamento",
           body: [
-            `Titolare del trattamento dei dati è PowerAgency. Per qualsiasi richiesta relativa ai tuoi dati personali puoi scrivere a ${CONTACT.email}.`,
-            "[Da completare con ragione sociale, partita IVA e sede legale.]",
+            `Titolare del trattamento dei dati è ${COMPANY.identifier}.`,
+            `Per qualsiasi richiesta relativa ai tuoi dati personali puoi scrivere a ${CONTACT.email}.`,
           ],
         },
         {
