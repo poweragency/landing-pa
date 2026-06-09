@@ -56,6 +56,36 @@ export async function POST(req: Request) {
     }
   }
 
+  // Inoltra a Power Hub (CRM) come lead "web_form". Server-to-server: il secret
+  // resta lato server, mai nel browser. Configurare su Vercel:
+  //   POWERHUB_WEBFORM_SECRET  (= WEBFORM_WEBHOOK_SECRET su Power Hub)
+  //   POWERHUB_WEBFORM_URL     (opzionale, default crm.poweragency.it)
+  const phSecret = process.env.POWERHUB_WEBFORM_SECRET;
+  if (phSecret) {
+    const phUrl =
+      process.env.POWERHUB_WEBFORM_URL ||
+      "https://crm.poweragency.it/api/webhooks/web-form";
+    try {
+      await fetch(phUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-webform-secret": phSecret,
+        },
+        body: JSON.stringify({
+          nome: name,
+          email,
+          telefono: phone,
+          messaggio: sector ? `Settore: ${sector}` : null,
+          source: "poweragency.it",
+        }),
+      });
+    } catch (err) {
+      console.error("[lead] powerhub forward failed:", err);
+      // non blocchiamo l'utente
+    }
+  }
+
   // Sempre loggato (visibile nei log della funzione su Vercel)
   console.log("[lead]", lead);
 
