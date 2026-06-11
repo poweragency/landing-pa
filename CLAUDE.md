@@ -5,7 +5,8 @@
 ## ⚠️ Cos'è questo progetto
 - È la landing PowerAgency **reale**, servita su **`www.poweragency.it`** (l'apex `poweragency.it` fa 307 → www). Single-locale IT.
 - Vercel project **`landing-poweragency`** · repo **`poweragency/landing-poweragency`** · **deploy automatico a ogni push su `main`**.
-- Il vecchio progetto `poweragency-web` è stato **eliminato** (2026-06): NON cercare il HUB altrove. Pagine: `/`, `/ecosistema`, `/software`, `/crm`, `/prop`, `/ecommerce` + legali.
+- Il vecchio progetto `poweragency-web` è stato **eliminato** (2026-06): NON cercare il HUB altrove. Pagine: `/`, `/ecosistema`, `/software`, `/crm`, `/prop`, `/ecommerce` + legali (privacy/termini/cookie con dati fiscali reali da `lib/content.ts`).
+- **Lead capture (2026-06-09):** il form contatti fa POST a **`/api/lead`** (`app/api/lead/route.ts`): valida nome/email/telefono, poi inoltra best-effort (mai bloccante per l'utente) a (1) `LEAD_WEBHOOK_URL` se configurata (Zapier/Make/...) e (2) **Power Hub** come lead `web_form` con `source: "poweragency.it"` — env su Vercel: `POWERHUB_WEBFORM_SECRET` (= `WEBFORM_WEBHOOK_SECRET` lato Power Hub) e `POWERHUB_WEBFORM_URL` (default `https://crm.poweragency.it/api/webhooks/web-form`). Il secret resta server-side.
 
 ## Comandi
 - `npm run dev` — sviluppo
