@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   description:
     "Costruiamo asset che generano clienti: sito, lead generation e CRM in un unico sistema guidato dall'AI. Se non funziona sul nostro business, non lo portiamo fuori.",
   alternates: { canonical: SITE_URL },
-  icons: { icon: "/brand/logo.png" },
+  applicationName: "PowerAgency",
   openGraph: {
     title: HOME_TITLE,
     description: HOME_OG_DESCRIPTION,
