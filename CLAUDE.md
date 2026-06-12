@@ -36,3 +36,11 @@
 
 ## Brand
 Email `info@poweragency.it` · IG `@_poweragency_` · logo `public/brand/logo.png` · palette: base scuro `#0a0606`, accento arancio `#ff6a1a` (gradient amber→red), font Space Grotesk (`font-head`) + Inter.
+
+## Icone e manifest (12/06/2026)
+
+Set generato dal logo tondo (`public/brand/logo.png`): `public/icon-192.png`, `icon-512.png`,
+`icon-maskable-512.png` (su sfondo nero opaco) + `app/icon.png` (favicon via convention,
+sostituisce il vecchio `icons:{}` esplicito nel metadata) e `app/apple-icon.png` (180, su nero).
+`app/manifest.ts` è **light** (display `browser`): sito vetrina, niente PWA standalone/sw.js.
+Pattern: `Z:\SECOND-BRAIN\sources\stack\pattern-icone-pwa-progetto.md`.
